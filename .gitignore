@@ -1,0 +1,21 @@
+# Neo4j / tooling local files
+*.dump
+*.backup
+import/
+plugins/
+logs/
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+.vs/
+.vscode/
+*.suo
+*.user
+
+# Scratch
+scratchpad/
+
+
+# Local-only Docker env (machine-specific host ports)
+.env

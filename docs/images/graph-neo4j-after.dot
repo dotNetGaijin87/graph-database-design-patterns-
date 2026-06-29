@@ -1,0 +1,27 @@
+digraph after {
+  graph [bgcolor="white", fontname="Helvetica", splines=true, overlap=false, pad=0.35, sep="+8"];
+  node  [shape=circle, style=filled, fillcolor="#ACCCE4", color="#37618E", penwidth=1.6,
+         fontname="Helvetica", fontsize=13, margin=0.05];
+  edge  [color="#3a3a3a", fontname="Helvetica", fontsize=10, fontcolor="#2a2a2a", arrowsize=0.8, penwidth=1.1];
+
+  Customer; Product; Order; Review; Category; Vendor; State;
+  OrderStatus; Year; Month; Day;
+
+  Customer -> State        [label="LIVES_IN ·004"];
+  Customer -> Order        [label="PLACED ·006"];
+  Order    -> Product      [label="CONTAINS ·006"];
+  Customer -> Review       [label="WROTE ·003"];
+  Review   -> Product      [label="REVIEWS ·003"];
+  Customer -> Product      [label="WANTS ·005"];
+  Customer -> Product      [label="RATED ·009"];
+  Product  -> Vendor       [label="SUPPLIED_BY ·004"];
+  Product  -> Category     [label="IN_CATEGORY ·007"];
+  Category -> Category     [label="SUBCATEGORY_OF ·007"];
+  Product  -> Product      [label="ALSO_BOUGHT ·012"];
+  Order    -> OrderStatus  [label="HAS_STATUS ·010"];
+  OrderStatus -> OrderStatus [label="NEXT ·010"];
+  Order    -> OrderStatus  [label="CURRENT_STATUS ·010"];
+  Order    -> Day          [label="ORDERED_ON ·010"];
+  Year     -> Month        [label="HAS_MONTH ·010"];
+  Month    -> Day          [label="HAS_DAY ·010"];
+}

@@ -1,0 +1,13 @@
+digraph before {
+  graph [bgcolor="white", fontname="Helvetica", splines=true, pad=0.3, ranksep=1.1, nodesep=0.8];
+  node  [shape=ellipse, style=filled, fillcolor="#ACCCE4", color="#37618E", penwidth=1.6, fontname="Helvetica"];
+  edge  [color="#3a3a3a", fontname="Helvetica", fontsize=10, fontcolor="#2a2a2a", arrowsize=0.9, penwidth=1.2];
+
+  Customer [label=<<B>:Customer</B><BR/><FONT POINT-SIZE="9">wishlist: "A,B,C"  (CSV string)<BR/>state: "CA"  (bare string)<BR/>creditCard: inline PII</FONT>>];
+  Product  [label=<<B>:Product</B><BR/><FONT POINT-SIZE="9">category: "Electronics/Audio/…"  (path)<BR/>vendorName  (repeated string)<BR/>compatibleOs  (nullable subtype attr)</FONT>>];
+  Review   [label=<<B>:Review</B>  —  island, not connected<BR/><FONT POINT-SIZE="9">authorId  (no edge)<BR/>productId  (no edge)</FONT>>];
+
+  Customer -> Product [label="ORDERED {orderId, qty, date, status}\n(order flattened onto the edge)"];
+  Review -> Customer  [label="authorId\n(faked FK)", style=dashed];
+  Review -> Product   [label="productId\n(faked FK)", style=dashed];
+}
